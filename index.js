@@ -11,6 +11,18 @@ John: 4
 Jane: 5
 `;
 
+// Pre-Palindrome
+const palindromeChecker = string => {
+  let sanitizedArray = string.toLowerCase().replace(/\W/g, '').split('');
+  let reversedCheck = string.toLowerCase().replace(/\W/g, '').split('').reverse().join('');
+  if (sanitizedArray.join('') === reversedCheck) {
+    
+    // return message determining if it is Palindrome
+    outputTextArea.classList.add('.prescreen-palindrome');
+  };
+};
+
+// palindromeChecker('taco,    cat');
 
 // Click listener for totaling sums of keys
 totalButton.addEventListener('click', () => {
@@ -36,6 +48,8 @@ totalButton.addEventListener('click', () => {
   // modifies userObject 
   inputArray.forEach((el) => {
     let name = el.match(/([A-Z])+(?=:)/gi);
+    console.log(name);
+    palindromeChecker(name[0]);
     let number = el.match(/(\d)+/gi);
     usersObject[name] += parseInt(number);
     console.log(usersObject[name]);
@@ -50,5 +64,5 @@ totalButton.addEventListener('click', () => {
     }
   }
 
-  console.log("Object:", usersObject);
+
 });
