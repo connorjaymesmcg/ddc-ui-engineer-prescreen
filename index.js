@@ -14,12 +14,12 @@ Jane: 5
 
 // Click listener for totaling sums of keys
 totalButton.addEventListener('click', () => {
-  // const newText = inputTextArea.value.split(/[\n]/).filter(element => element != '').map(element => element.trim());
-  // console.log(newText);
+  // Set output to 
+  outputTextArea.innerHTML = '';
+
   console.log(inputTextArea.innerHTML);
-  // let array = inputTextArea.value.split(/[\n]/).filter(element => element != '');
-  let inputArray = inputTextArea.value.trim().split(/\n/)
-  let newTextString = JSON.stringify(array);
+  let inputArray = inputTextArea.value.trim().split(/\n/);
+  let newTextString = JSON.stringify(inputArray);
   let nameParser = newTextString.match(/(?<=")(\w+)(?=:)/gi);
   let uniqueNameKeys = [...new Set(nameParser)];
 
@@ -33,12 +33,22 @@ totalButton.addEventListener('click', () => {
 
   let usersObject = buildUserObject(uniqueNameKeys);
 
+  // modifies userObject 
   inputArray.forEach((el) => {
     let name = el.match(/([A-Z])+(?=:)/gi);
     let number = el.match(/(\d)+/gi);
-    usersObject[name] = usersObject[name] + parseInt(number);
+    usersObject[name] += parseInt(number);
     console.log(usersObject[name]);
   });
+
+  // creates the output string
+  for (const name in usersObject) {
+    if (isNaN(usersObject[name])) {
+      outputTextArea.innerHTML += `${name}: Not valid number \n`;
+    } else {
+      outputTextArea.innerHTML += `The total for ${name} is ${usersObject[name]} \n`;
+    }
+  }
 
   console.log("Object:", usersObject);
 });
