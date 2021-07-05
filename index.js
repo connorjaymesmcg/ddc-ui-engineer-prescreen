@@ -16,13 +16,9 @@ const palindromeChecker = string => {
   let sanitizedArray = string.toLowerCase().replace(/\W/g, '').split('');
   let reversedCheck = string.toLowerCase().replace(/\W/g, '').split('').reverse().join('');
   if (sanitizedArray.join('') === reversedCheck) {
-    
-    // return message determining if it is Palindrome
     outputTextArea.classList.add('.prescreen-palindrome');
   };
 };
-
-// palindromeChecker('taco,    cat');
 
 // Click listener for totaling sums of keys
 totalButton.addEventListener('click', () => {
