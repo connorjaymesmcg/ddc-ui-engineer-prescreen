@@ -44,7 +44,6 @@ totalButton.addEventListener('click', () => {
   // modifies userObject 
   inputArray.forEach((el) => {
     let name = el.match(/([A-Z])+(?=:)/gi);
-    console.log(name);
     palindromeChecker(name[0]);
     let number = el.match(/(\d)+/gi);
     usersObject[name] += parseInt(number);
