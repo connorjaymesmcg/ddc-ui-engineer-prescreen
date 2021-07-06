@@ -3,6 +3,7 @@ const inputTextArea = document.querySelector('.prescreen-input');
 const outputTextArea = document.querySelector('.prescreen-output');
 const totalButton = document.querySelector('.prescreen-button');
 
+// Set default textarea content
 inputTextArea.innerHTML = `
 John: 2
 Jane: 3
@@ -23,6 +24,7 @@ const palindromeChecker = (string) => {
 
 // Click listener for totaling sums of keys
 totalButton.addEventListener('click', () => {
+
   // Refresh output on every click
   outputTextArea.innerHTML = '';
 
@@ -49,7 +51,7 @@ totalButton.addEventListener('click', () => {
     usersObject[name] += parseInt(number);
   });
 
-  // Create the output string
+  // Create the output string and print to output textarea element
   for (const name in usersObject) {
     if (isNaN(usersObject[name])) {
       outputTextArea.innerHTML += `${name}: Not valid number \n`;
